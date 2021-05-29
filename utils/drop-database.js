@@ -17,10 +17,11 @@ const dropDatabase = async () => {
     try {
         //to connect to the database
         const db = await mysql.createConnection({
+            name: DB_NAME,
             host: DB_HOST,
             user: DB_USER,
             password: DB_PASSWORD,
-            port: DB_PORT,
+            port: DB_PORT
         });
         //Drop the database
         await db.query(`DROP DATABASE ${DB_NAME}`);

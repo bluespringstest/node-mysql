@@ -4,6 +4,7 @@
 
 const mysql = require('mysql2/promise')
 const path = require('path'); 
+// const db = require('../src/services/db');
 //the path to handle file paths when a request is made.
 
 const args = process.argv.slice(2)[0]
@@ -24,14 +25,21 @@ const setUpDatabase = async () => {
     try {
         //to connect to the database
         const db = await mysql.createConnection({
+            name: DB_NAME,
             host: DB_HOST,
             user: DB_USER,
             password: DB_PASSWORD,
-            port: DB_PORT,
+            port: DB_PORT
         });
         //create the database only if it doesn't exist
         await db.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME}`);
-        db.close();
+           await db.query(`USE ${DB_NAME}`);
+           await db.query(`CREATE TABLE IF NOT EXISTS Artist (
+               id INT PRIMARY KEY auto_increment,
+               name VARCHAR(25),
+               genre VARCHAR(25)
+               )`);
+            db.close();
     }
     //if something goes wrong
     catch (err) {
@@ -49,6 +57,7 @@ const setUpDatabase = async () => {
         console.log(err);
     }
 };
+
 
 //run the asyncronous function
 setUpDatabase();
