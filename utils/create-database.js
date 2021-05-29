@@ -1,8 +1,8 @@
-```js
-utils/create-database.js
+
+
+//utils/create-database.js
 
 const mysql = require('mysql2/promise')
-
 const path = require('path'); 
 //the path to handle file paths when a request is made.
 
@@ -17,7 +17,7 @@ require('dotenv').config({
 });
 //Loads the environment variables from the env files.
 
-const {DB_PASSWORD, DB_NAME, DB_USER, DB_HOST, DB_PORT} = process.env;
+const { DB_PASSWORD, DB_NAME, DB_USER, DB_HOST, DB_PORT } = process.env;
 //retrieves (destructure) the environment variables from process.env
 
 const setUpDatabase = async () => {
@@ -30,11 +30,14 @@ const setUpDatabase = async () => {
             port: DB_PORT,
         });
         //create the database only if it doesn't exist
-        await db.query('CREATE DATABASE IF NOT EXISTS ${DB_NAME}');
+        await db.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME}`);
         db.close();
-    };
+    }
     //if something goes wrong
     catch (err) {
+        console.log(
+            `Your environment variables might be wrong. Please double check .env file`
+        );
         //log out the error and current environment variables
         console.log('Environment Variables are:', {
             DB_PASSWORD,
@@ -50,4 +53,3 @@ const setUpDatabase = async () => {
 //run the asyncronous function
 setUpDatabase();
 
-```
