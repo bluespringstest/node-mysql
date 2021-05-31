@@ -25,7 +25,6 @@ const setUpDatabase = async () => {
     try {
         //to connect to the database
         const db = await mysql.createConnection({
-            name: DB_NAME,
             host: DB_HOST,
             user: DB_USER,
             password: DB_PASSWORD,
@@ -33,12 +32,12 @@ const setUpDatabase = async () => {
         });
         //create the database only if it doesn't exist
         await db.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME}`);
-           await db.query(`USE ${DB_NAME}`);
-           await db.query(`CREATE TABLE IF NOT EXISTS Artist (
-               id INT PRIMARY KEY auto_increment,
-               name VARCHAR(25),
-               genre VARCHAR(25)
-               )`);
+        //    await db.query(`USE ${DB_NAME}`);
+        //    await db.query(`CREATE TABLE IF NOT EXISTS Artist (
+        //        id INT PRIMARY KEY auto_increment,
+        //        name VARCHAR(25),
+        //        genre VARCHAR(25)
+        //        )`);
             db.close();
     }
     //if something goes wrong
