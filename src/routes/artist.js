@@ -6,6 +6,7 @@ const app = express();
 
 app.use(express.json());
 
-router.post('/', artistController.create)
+router.post('/', artistController.create);
+router.get('/', artistController.read);
 
 module.exports = router;
