@@ -61,5 +61,20 @@ exports.update = async (req, res) => {
 };
 
 exports.album = async (req, res) => {
+    const db = await getDb();
+    const {artistId} = req.params;
+    const { name, year } = req.body;
+    try{
+        await db.query(`INSERT INTO Album (name, year, ArtistId) VALUES (?, ?, ?)`
+        , [
+            name,
+            year,
+            artistId,
+        ]
+        );
+        res.sendStatus(201);
+    } catch (err) {
+        res.sendStatus(500).json(err);
+    }
     db.close();
 };
