@@ -38,6 +38,12 @@ const setUpDatabase = async () => {
                name VARCHAR(25),
                genre VARCHAR(25)
                )`);
+           await db.query(`CREATE TABLE IF NOT EXISTS Album (
+                CONSTRAINT FK_ArtistId FOREIGN KEY (id) REFERENCES Artist(id),
+                Album_id INT PRIMARY KEY auto_increment,
+                name VARCHAR(25),
+                genre VARCHAR(25)
+                )`); 
             db.close();
     }
     //if something goes wrong
