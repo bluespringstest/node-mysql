@@ -59,3 +59,7 @@ exports.update = async (req, res) => {
     }
     db.close();
 };
+
+exports.album = async (req, res) => {
+    db.close();
+};
