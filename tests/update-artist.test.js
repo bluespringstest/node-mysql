@@ -11,7 +11,7 @@ describe('update artist', () => {
     await Promise.all([
       db.query('INSERT INTO Artist (name, genre) VALUES(?, ?)', [
         'Linkin Park',
-                'rock',
+          'rock'
             ]),
             db.query(`INSERT INTO Artist (name, genre) VALUES (?, ?)`, [
                 'Kate Nash',

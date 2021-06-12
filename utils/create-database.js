@@ -4,7 +4,7 @@
 
 const mysql = require('mysql2/promise')
 const path = require('path'); 
-// const db = require('../src/services/db');
+const db = require('../src/services/db');
 //the path to handle file paths when a request is made.
 
 const args = process.argv.slice(2)[0]
@@ -36,7 +36,7 @@ const setUpDatabase = async () => {
            await db.query(`CREATE TABLE IF NOT EXISTS Artist (
                id INT PRIMARY KEY auto_increment,
                name VARCHAR(25),
-               year VARCHAR(25)
+               genre VARCHAR(25)
                )`);
            await db.query(`CREATE TABLE IF NOT EXISTS Album (
             Album_id INT PRIMARY KEY auto_increment,    
