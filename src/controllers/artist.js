@@ -69,7 +69,7 @@ exports.album = async (req, res) => {
         , [
             name,
             year,
-            artistId,
+            artistId
         ]
         );
         res.sendStatus(201);
