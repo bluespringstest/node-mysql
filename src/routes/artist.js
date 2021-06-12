@@ -10,6 +10,7 @@ router.post('/', artistController.create);
 router.get('/', artistController.read);
 router.get('/:artistId', artistController.readById);
 router.patch('/:artistId', artistController.update);
+router.delete('/:artistId', artistController.delete);
 router.post('/:artistId/album', artistController.album);
 
 module.exports = router;
