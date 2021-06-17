@@ -17,6 +17,7 @@ describe('create album', () => {
                     name: 'Linkin Park',
                     genre: 'rock',
                 });
+
                 expect(old.status).to.eq(201);
                 const [[artistEntries]] = await db.query(
                     `SELECT * FROM Artist WHERE name = 'Linkin Park'`
@@ -31,6 +32,7 @@ describe('create album', () => {
                 const [[albumEntries]] = await db.query(
                     `SELECT * FROM Album WHERE name = 'Meteora'`
                 );
+                console.log(albumEntries)
                 expect(albumEntries.name).to.equal('Meteora');
                 expect(albumEntries.year).to.equal(2003);
             });
