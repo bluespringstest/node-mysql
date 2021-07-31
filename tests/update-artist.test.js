@@ -38,7 +38,6 @@ describe('update artist', () => {
         const res = await request(app)
           .patch(`/artist/${artist.id}`)
           .send({ name: 'new name', genre: 'new genre' });
-
         expect(res.status).to.equal(200);
 
         const [
